@@ -82,3 +82,9 @@ $theme: mat.define-light-theme($primary, $accent);
 
 // Include all theme styles for the components.
 @include mat.all-component-themes($theme);
+
+h1, h2, h3, h4, h5, h5 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}

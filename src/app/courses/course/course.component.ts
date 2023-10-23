@@ -1,39 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {Course} from '../model/course';
-
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
+import { Course } from "../model/course";
 
 @Component({
-    selector: 'course',
-    templateUrl: './course.component.html',
-    styleUrls: ['./course.component.css']
+  selector: "course",
+  templateUrl: "./course.component.html",
+  styleUrls: ["./course.component.css"],
 })
 export class CourseComponent implements OnInit {
+  course: Course;
+  couponCode: string;
 
-    course: Course;
+  constructor(private route: ActivatedRoute) {}
 
-    couponCode: string;
+  ngOnInit() {
+    this.course = this.route.snapshot.data["course"];
+    this.couponCode = this.route.snapshot.queryParamMap.get("couponCode");
+  }
 
-
-    constructor() {
-
-
-    }
-
-    ngOnInit() {
-
-
-    }
-
-
+  confirmExit() {
+    return confirm(`Are you sure you want to exit ${this.course.description}?`);
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
